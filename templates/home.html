@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block title %}Panel de Administración - MediWeb{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    
+    <!-- Encabezado del Panel -->
+    <div class="row mb-4">
+        <div class="col">
+            <h2 class="fw-semibold text-white">Panel de Control</h2>
+            <p class="text-muted">Bienvenido, <span class="text-info fw-medium">{{ session.get('username', 'Administrador') }}</span>. Gestiona los módulos de la clínica desde aquí.</p>
+        </div>
+    </div>
+
+    <!-- Rejilla de Tarjetas (Cards) -->
+    <div class="row g-4">
+        
+        <!-- Tarjeta: Médicos -->
+        <div class="col-10 col-sm-6 col-md-4 mx-auto mx-sm-0">
+            <div class="card bg-dark border-secondary h-100 shadow-sm hover-card">
+                <div class="card-body p-4 d-flex flex-column">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-info bg-opacity-10 p-2 rounded text-info me-3">
+                            <i class="bi bi-heart-pulse fs-3"></i>
+                        </div>
+                        <h5 class="card-title text-white mb-0 fw-semibold">Médicos</h5>
+                    </div>
+                    <p class="card-text text-muted small flex-grow-1">Administra el personal médico, añade especialistas y edita sus horarios de atención.</p>
+                    <div class="d-grid mt-3">
+                        <a href="{{ url_for('medico.menu') }}" class="btn btn-outline-info btn-sm">
+                            <i class="bi bi-people me-2"></i>Gestionar Médicos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta: Usuarios -->
+        <div class="col-10 col-sm-6 col-md-4 mx-auto mx-sm-0">
+            <div class="card bg-dark border-secondary h-100 shadow-sm hover-card">
+                <div class="card-body p-4 d-flex flex-column">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary bg-opacity-10 p-2 rounded text-primary me-3">
+                            <i class="bi bi-person-gear fs-3"></i>
+                        </div>
+                        <h5 class="card-title text-white mb-0 fw-semibold">Usuarios</h5>
+                    </div>
+                    <p class="card-text text-muted small flex-grow-1">Controla los accesos al sistema, gestiona credenciales, roles y permisos de cuentas.</p>
+                    <div class="d-grid mt-3">
+                        <!-- Ajusta esta ruta según manejes tu lista de usuarios -->
+                        <a href="#" class="btn btn-outline-primary btn-sm">
+                            <i class="bi bi-person-lines-fill me-2"></i>Ver Cuentas
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta: Configuración u Otro Módulo (Ej. Reportes o Pacientes) -->
+        <div class="col-10 col-sm-6 col-md-4 mx-auto mx-sm-0">
+            <div class="card bg-dark border-secondary h-100 shadow-sm hover-card">
+                <div class="card-body p-4 d-flex flex-column">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-warning bg-opacity-10 p-2 rounded text-warning me-3">
+                            <i class="bi bi-shield-check fs-3"></i>
+                        </div>
+                        <h5 class="card-title text-white mb-0 fw-semibold">Seguridad</h5>
+                    </div>
+                    <p class="card-text text-muted small flex-grow-1">Revisa el historial de ingresos, auditorías de datos y estados del servidor de la clínica.</p>
+                    <div class="d-grid mt-3">
+                        <a href="#" class="btn btn-outline-warning btn-sm">
+                            <i class="bi bi-sliders me-2"></i>Ajustes
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Estilo extra opcional para mejorar la UX al pasar el cursor sobre las tarjetas -->
+<style>
+    .hover-card {
+        transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .hover-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 255, 255, 0.2) !important;
+    }
+</style>
+{% endblock %}

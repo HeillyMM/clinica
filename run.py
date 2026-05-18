@@ -1,0 +1,24 @@
+from flask import Flask,redirect,url_for
+from database import db
+from controllers import medico_controller,usuario_controlller
+
+app = Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///clinica.db"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+app.secret_key = 'clave_secreta_12345'
+
+db.init_app(app)
+
+app.register_blueprint(medico_controller.medico_bp)
+app.register_blueprint(usuario_controlller.usuario_bp)
+
+@app.route("/")
+def home():
+    return redirect(url_for('usuarios.login'))
+
+if __name__ == "__main__":
+    with app.app_context():
+        db.create_all()
+    app.run(debug=True)
