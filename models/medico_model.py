@@ -1,5 +1,6 @@
 from database import db
 from models.usuario_model import Usuario
+from models.consulta_model import Consulta
 
 class Medico(db.Model):
     __tablename__ = "medicos"

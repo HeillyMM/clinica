@@ -42,7 +42,7 @@ class Usuario(db.Model):
         db.session.add(self)
         db.session.commit()
 
-    def editar(self,username=None,correo=None,password=None):
+    def actualizar(self,username=None,correo=None,password=None):
         if username:
             self.username = username
         if correo:
@@ -55,3 +55,6 @@ class Usuario(db.Model):
     def eliminar(self):
         db.session.delete(self)
         db.session.commit()
+
+    def usuario_medico(username):
+        return Usuario.query.filter_by(username=username).first()

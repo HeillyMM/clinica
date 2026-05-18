@@ -1,4 +1,11 @@
+# rear paciente
+# eliminar paciente
+# actualizar paciente
+# ver paciente
+
 from database import db
+from models.medico_model import Medico
+
 
 class Paciente(db.Model):
     __tablename__ = "pacientes"
@@ -20,4 +27,28 @@ class Paciente(db.Model):
     
     def guardar(self):
         db.session.add(self)
+        db.session.commit()
+
+    @staticmethod
+    def pacientes():
+        return Paciente.query.all()
+    
+    @staticmethod
+    def paciente(id):
+        return Paciente.query.get(id)
+    
+    def actualizar(self,nombre=None,edad=None,direccion=None,telefono=None):
+        if nombre:
+            self.nombre = nombre
+        if edad:
+            self.edad = edad
+        if direccion:
+            self.direccion = direccion
+        if telefono:
+            self.telefono = telefono
+        
+        db.session.commit()
+
+    def eliminar(self):
+        db.session.delete(self)
         db.session.commit()

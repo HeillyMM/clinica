@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Agregar consulta{% endblock %}
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card bg-dark border-secondary shadow-sm p-4">
+            <h2 class="h4 text-white mb-4 fw-semibold"><i class="bi bi-person-plus me-2"></i>Agregar Consulta</h2>
+            
+            <form action="{{ url_for('consulta.crear') }}" method="POST">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label text-white-50">Fecha</label>
+                    <input name="fecha" type="date" class="form-control bg-dark border-secondary" id="nombre" required>
+                </div>
+                <div class="mb-3">
+                    <label for="especialidad" class="form-label text-white-50">Diagnóstico</label>
+                    <input name="diagnostico" type="textarea" class="form-control bg-dark border-secondary" id="especialidad" required>
+                </div>
+                <div class="mb-3">
+                    <label for="telefono" class="form-label text-white-50">Tratamiento</label>
+                    <input name="tratamiento" type="textarea" class="form-control bg-dark border-secondary" id="direccion">
+                </div>
+                <div class="mb-4">
+                    <label for="correo" class="form-label text-white-50" id="paciente">Paciente</label>
+                    <select id="paciente" name="id_paciente">
+                        <option value="..." class="form-control bg-dark border-secondary">Buscar</option>                        
+                        {% for paciente in pacientes %}
+                        <option value="{{paciente.id_paciente}}">{{paciente.nombre}}</option>       
+                        {% endfor %}                 
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-light w-100 fw-semibold">Agregar Paciente</button><br><br>
+            </form>
+            <a href="{{ url_for('paciente.menu') }}" style="color:rgba(255, 255, 255, 0.699); text-align: center; text-decoration: none;">← Volver</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

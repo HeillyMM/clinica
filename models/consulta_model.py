@@ -19,3 +19,45 @@ class Consulta(db.Model):
 
     medico = db.relationship('Medico',back_populates ="consultas")
     paciente = db.relationship('Paciente',back_populates ="consultas")
+
+    def __init__(self,fecha,diagnostico,tratamiento,id_paciente,id_medico):
+        self.fecha = fecha
+        self.diagnostico = diagnostico
+        self.tratamiento = tratamiento
+        self.id_paciente = id_paciente
+        self.id_medico = id_medico
+
+# crear consulta -> medico
+# editar consulta -> médico
+# ver consulta -> medico y admin
+# Eliminar consulta -> medico
+
+    def guardar(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def actualizar(self,fecha,diagnostico,tratamiento,id_paciente,id_medico):
+        if fecha:
+            self.fecha = fecha
+        if diagnostico:
+            self.diagnostico = diagnostico
+        if tratamiento:
+            self.tratamiento = tratamiento
+        if id_paciente:
+            self.id_paciente = id_paciente
+        if id_medico:
+            self.id_medico = id_medico
+        
+        db.session.commit()
+
+    @staticmethod
+    def consultas():
+        return Consulta.query.all()
+    
+    @staticmethod
+    def consulta(id):
+        return Consulta.query.get(id)
+    
+    def eliminar(self):
+        db.session.delete(self)
+        db.session.commit()

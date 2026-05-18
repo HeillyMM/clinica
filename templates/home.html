@@ -35,6 +35,46 @@
             </div>
         </div>
 
+                <!-- Tarjeta: Pacientes -->
+        <div class="col-10 col-sm-6 col-md-4 mx-auto mx-sm-0">
+            <div class="card bg-dark border-secondary h-100 shadow-sm hover-card">
+                <div class="card-body p-4 d-flex flex-column">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary bg-opacity-10 p-2 rounded text-primary me-3">
+                            <i class="bi bi-person-gear fs-3"></i>
+                        </div>
+                        <h5 class="card-title text-white mb-0 fw-semibold">Pacientes</h5>
+                    </div>
+                    <p class="card-text text-muted small flex-grow-1">Administra los pacientes registrados, añade pacientes y edita sus informaciones.</p>
+                    <div class="d-grid mt-3">
+                        <a href="{{ url_for('paciente.menu') }}" class="btn btn-outline-primary btn-sm">
+                            <i class="bi bi-person-lines-fill me-2"></i>Gestionar pacientes
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta: Consultas -->
+        <div class="col-10 col-sm-6 col-md-4 mx-auto mx-sm-0">
+            <div class="card bg-dark border-secondary h-100 shadow-sm hover-card">
+                <div class="card-body p-4 d-flex flex-column">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary bg-opacity-10 p-2 rounded text-primary me-3">
+                            <i class="bi bi-person-gear fs-3"></i>
+                        </div>
+                        <h5 class="card-title text-white mb-0 fw-semibold">Consultas</h5>
+                    </div>
+                    <p class="card-text text-muted small flex-grow-1">Administra las consultas registradas, añade y edita sus informaciones.</p>
+                    <div class="d-grid mt-3">
+                        <a href="{{ url_for('consulta.menu') }}" class="btn btn-outline-primary btn-sm">
+                            <i class="bi bi-person-lines-fill me-2"></i>Gestionar consultas
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Tarjeta: Usuarios -->
         <div class="col-10 col-sm-6 col-md-4 mx-auto mx-sm-0">
             <div class="card bg-dark border-secondary h-100 shadow-sm hover-card">
